@@ -1,9 +1,27 @@
 var React = require('react');
+var MenuItem = require('./MenuItem');
 
 require('./../css/Menu.css');
 require('./../css/Media.css');
 
-let MENU = [];
+let MENU = [
+    {
+        id:0,
+        title:"News"
+    },
+    {
+        id:1,
+        title:"NoteBooks"
+    },
+    {
+        id:2,
+        title:"PC"
+    },
+    {
+        id:3,
+        title:"Feedback"
+    },
+];
 
 var Menu = React.createClass({
     getInitialState: function() {
@@ -16,10 +34,9 @@ var Menu = React.createClass({
         return (
             <div className="col-3 menu">
                 <ul>
-                    <li>News</li>
-                    <li>NoteBooks</li>
-                    <li>PC</li>
-                    <li>Feedback</li>
+                    {this.state.displayedItems.map(function(item){
+                        return <MenuItem item={item}/>
+                    })}
                 </ul>
             </div>
         );

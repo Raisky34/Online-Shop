@@ -19673,7 +19673,7 @@
 	var InfoBlock = __webpack_require__(185);
 	var Menu = __webpack_require__(191);
 
-	__webpack_require__(192);
+	__webpack_require__(193);
 	__webpack_require__(189);
 
 	var ITEMS = [{
@@ -22379,11 +22379,24 @@
 	'use strict';
 
 	var React = __webpack_require__(147);
+	var MenuItem = __webpack_require__(192);
 
 	__webpack_require__(187);
 	__webpack_require__(189);
 
-	var MENU = [];
+	var MENU = [{
+	    id: 0,
+	    title: "News"
+	}, {
+	    id: 1,
+	    title: "NoteBooks"
+	}, {
+	    id: 2,
+	    title: "PC"
+	}, {
+	    id: 3,
+	    title: "Feedback"
+	}];
 
 	var Menu = React.createClass({
 	    displayName: 'Menu',
@@ -22401,26 +22414,9 @@
 	            React.createElement(
 	                'ul',
 	                null,
-	                React.createElement(
-	                    'li',
-	                    null,
-	                    'News'
-	                ),
-	                React.createElement(
-	                    'li',
-	                    null,
-	                    'NoteBooks'
-	                ),
-	                React.createElement(
-	                    'li',
-	                    null,
-	                    'PC'
-	                ),
-	                React.createElement(
-	                    'li',
-	                    null,
-	                    'Feedback'
-	                )
+	                this.state.displayedItems.map(function (item) {
+	                    return React.createElement(MenuItem, { item: item });
+	                })
 	            )
 	        );
 	    }
@@ -22435,10 +22431,44 @@
 /* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var React = __webpack_require__(147);
+
+	__webpack_require__(187);
+	__webpack_require__(189);
+
+	var MenuItem = React.createClass({
+	    displayName: 'MenuItem',
+
+	    getInitialState: function getInitialState() {
+	        return null;
+	    },
+
+	    openPage: function openPage() {
+	        console.log(this.props.item);
+	    },
+
+	    render: function render() {
+	        return React.createElement(
+	            'li',
+	            { onClick: this.openPage },
+	            this.props.item.title
+	        );
+	    }
+
+	});
+
+	module.exports = MenuItem;
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(193);
+	var content = __webpack_require__(194);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(184)(content, {});
@@ -22458,7 +22488,7 @@
 	}
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(183)();
